@@ -9,7 +9,7 @@
 <body>
     <div id="homePage">
         <h1>Zombie Shooter</h1>
-        <a href="#gamePage" onclick="runGame()">
+        <a href="#gamePage" onclick="game.start()">
             LET'S GO
         </a>
     <p><a href="#htp">How to Play</a></p>
@@ -22,7 +22,7 @@
             <p id="point">You killed : </p>
             <div class="popupBtn">
             <a href="#homePage" onclick="location.reload()"><button>Home</button></a>
-            <a ><button onclick="location.reload()">Play Again</button></a>
+            <a href="#gamePage"><button onclick="game.start()">Play Again</button></a>
             </div>
         </div>
         </div>

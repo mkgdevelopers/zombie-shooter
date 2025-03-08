@@ -1,21 +1,14 @@
-const game = document.getElementById('gamePage');
-const home = document.getElementById('home');
+const gameBoard = document.getElementById('gamePage');
 let kill = 0;
 let speed = 1000;
 
 function spawnZombies() {
     let zombie = document.createElement('div');
     zombie.classList.add('zombie');
-    game.appendChild(zombie)
+    gameBoard.appendChild(zombie)
 
-
-
-        x = innerHeight+40;
-        y = Math.random()*window.innerWidth;
-
-
-
-
+    x = innerHeight+40;
+    y = Math.random()*window.innerWidth;
 
     zombie.style.top = `${x}px`
     zombie.style.left = `${y}px`
@@ -25,10 +18,11 @@ function spawnZombies() {
         zombie.style.top = `${window.innerHeight/ 2}px`
         zombie.style.left = `${window.innerWidth/ 2 -25}px`
     },100)
+
     function killZombie() {
-        game.removeChild(zombie);
+        gameBoard.removeChild(zombie);
         kill++;
-        speed -= 100;
+        speed -= 50;
     }
     zombie.addEventListener('click',killZombie)
   
@@ -38,15 +32,23 @@ function spawnZombies() {
             zombie.removeEventListener("click",killZombie)
             document.getElementById('point').innerHTML=`You killed : ${kill}`
             document.getElementById('score').style.display='block' 
-            clearInterval(gameInterval);
+            game.stop();
+            let zombies = document.querySelectorAll('.zombie');
+            zombies.forEach(zombie => gameBoard.removeChild(zombie));
 
         }
     },5000);
 }
-function killZombie() {
-    game.removeChild(zombie);
-    kill++;
-}
- function runGame(){
-    const gameInterval = setInterval(spawnZombies, speed);
- }
+
+let gameInterval;
+
+let game = {
+    start : () => {
+        gameInterval = setInterval(spawnZombies, speed);
+        document.getElementById('score').style.display='none'
+    },
+    stop : () => {
+        clearInterval(gameInterval);
+    }
+};
+
