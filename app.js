@@ -22,7 +22,7 @@ function spawnZombies() {
     function killZombie() {
         gameBoard.removeChild(zombie);
         kill++;
-        speed -= 50;
+        speed -= 10;
     }
     zombie.addEventListener('click',killZombie)
   
@@ -30,11 +30,12 @@ function spawnZombies() {
     setTimeout(()=>{
         if(document.body.contains(zombie)){
             zombie.removeEventListener("click",killZombie)
-            document.getElementById('point').innerHTML=`You killed : ${kill}`
-            document.getElementById('score').style.display='block' 
-            game.stop();
+            // document.getElementById('point').innerHTML=`You killed : ${kill}`
+            // document.getElementById('score').style.display='block' ;
             let zombies = document.querySelectorAll('.zombie');
             zombies.forEach(zombie => gameBoard.removeChild(zombie));
+            game.stop();
+            
 
         }
     },5000);
