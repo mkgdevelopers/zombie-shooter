@@ -47,4 +47,6 @@ function killZombie() {
     game.removeChild(zombie);
     kill++;
 }
-const gameInterval = setInterval(spawnZombies, speed);
+ function runGame(){
+    const gameInterval = setInterval(spawnZombies, speed);
+ }
