@@ -30,8 +30,8 @@ function spawnZombies() {
     setTimeout(()=>{
         if(document.body.contains(zombie)){
             zombie.removeEventListener("click",killZombie)
-            // document.getElementById('point').innerHTML=`You killed : ${kill}`
-            // document.getElementById('score').style.display='block' ;
+            document.getElementById('point').innerHTML=`You killed : ${kill}`
+            document.getElementById('score').style.display='block' ;
             let zombies = document.querySelectorAll('.zombie');
             zombies.forEach(zombie => gameBoard.removeChild(zombie));
             game.stop();
