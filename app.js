@@ -22,7 +22,7 @@ function spawnZombies() {
     function killZombie() {
         gameBoard.removeChild(zombie);
         kill++;
-        speed -= 10;
+        speed -= 1;
     }
     zombie.addEventListener('click',killZombie)
   
